@@ -15,6 +15,10 @@ const Wrapper = styled(Paper)`
 	grid-gap: 0.6rem;
 `;
 
+
+
+
+
 const LoginForm = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -31,11 +35,12 @@ const LoginForm = () => {
 
 	return (
     <Wrapper square={false}>
-      <h1>Hello Again!</h1>
-      <p>Welcome Back</p>
+		<div className ="header">
+ <h1> Hello Again!</h1>
+ <p className="header-text">Welcome Back</p>
+		</div>
 			<TextInput
 				label="Username or Email address"
-				value={email}
 				onChange={setEmail}
 			/>
 			<TextInput
@@ -49,11 +54,10 @@ const LoginForm = () => {
 				onClick={onSubmit}
       />
       <div className="links">
-				<Link to="/forgot">Forgot Password?</Link>
-				<br />
+				<Link to="/forgot" > Forgot Password?</Link>
 				<br />
         <p> Dont have an Account?
-        <span> <Link to="/register" className="c-green h2"> Signup? </Link> </span>
+        <span> <Link to="/register" className="c-green text-semi-bold" > Signup? </Link> </span>
         </p>
 			</div>
 		</Wrapper>

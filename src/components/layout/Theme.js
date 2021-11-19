@@ -6,6 +6,7 @@ const theme = {
 	color: {
     green: '#12A55E',
     dark: '#13293D',
+    grey: '#d4cbcb',
     white: '#F8F8F8'
 	}
 };
@@ -39,8 +40,9 @@ const GlobalStyle = createGlobalStyle`
 		padding: 0;
 	}
 	h1, .h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 700;
+
 	}
 	h2, .h2 {
     font-size: 1.1rem;
@@ -51,14 +53,15 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 600;
 	}
 	p, .p {
-		font-size: 1.0rem;
-    font-weight: normal;
+	font-size: 1.0rem;
+    font-weight: 400;
 	}
   .small {
     font-size: 0.75rem;
   }
   .text-semi-bold {
     font-weight: 700;
+	
   }
 	a {
 		font-size: 1.0rem;
@@ -67,7 +70,13 @@ const GlobalStyle = createGlobalStyle`
 	}
 	.c-green {
 		color: ${theme.color.green};
+
 	}
+	.links p {
+		padding-top: 0.7rem;
+	
+	}
+	
 `;
 
 const Theme = (props) =>

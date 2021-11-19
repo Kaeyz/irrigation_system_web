@@ -4,18 +4,19 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
 	.input {
-		height: 2.1rem;
+		height: 2.0rem;
 		width: 100%;
 		padding: 0rem 0.5rem;
 		outline: 0px;
+		color: ${props => props.theme.color.black};
 		border-radius: 5px;
 		border: 1px solid ${props => props.theme.color.grey};
 		:focus {
-			border: 1px solid ${props => props.theme.color.grey};
+			border: 1px solid ${props => props.theme.color.green};
 		}
 	}
 	.label {
-		color: ${props => props.theme.color.grey};
+		color: ${props => props.theme.color.dark};
 		min-width: max-content;
 	}
 `;
