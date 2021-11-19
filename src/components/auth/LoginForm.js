@@ -49,9 +49,11 @@ const LoginForm = () => {
 				onClick={onSubmit}
       />
       <div className="links">
-        <Link to="/forgot">Forgot Password?</Link>
+				<Link to="/forgot">Forgot Password?</Link>
+				<br />
+				<br />
         <p> Dont have an Account?
-        <span> <Link to="/register" >Signup</Link> </span>
+        <span> <Link to="/register" className="c-green h2"> Signup? </Link> </span>
         </p>
 			</div>
 		</Wrapper>

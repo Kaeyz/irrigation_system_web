@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import auth_BG from '../../svg/auth_bg.svg';
+import auth_BG from '../../assets/img/auth_bg.png';
 
 const Wrapper = styled.div`
 	min-width: 100vw;

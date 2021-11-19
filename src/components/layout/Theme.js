@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
 		padding: 0;
 		margin: 0;
 		font-size: 1.2rem;
-		font-family: Karla;
+		font-family: Poppins;
     color: ${theme.color.dark}
 	}
 	div, span {
@@ -38,28 +38,36 @@ const GlobalStyle = createGlobalStyle`
 		margin: 0;
 		padding: 0;
 	}
-	h1 {
-    font-size: 1.5rem;
+	h1, .h1 {
+    font-size: 2rem;
     font-weight: 700;
 	}
-	h2 {
+	h2, .h2 {
     font-size: 1.1rem;
     font-weight: 700;
 	}
-	h3 {
+	h3, .h3 {
     font-size: 1.1rem;
     font-weight: 600;
 	}
-	p {
-		font-size: 1rem;
+	p, .p {
+		font-size: 1.0rem;
     font-weight: normal;
 	}
   .small {
     font-size: 0.75rem;
   }
   .text-semi-bold {
-    font-weight: 600;
+    font-weight: 700;
   }
+	a {
+		font-size: 1.0rem;
+    font-weight: normal;
+		color: ${theme.color.dark};
+	}
+	.c-green {
+		color: ${theme.color.green};
+	}
 `;
 
 const Theme = (props) =>

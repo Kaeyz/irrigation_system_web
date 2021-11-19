@@ -3,10 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-	.inline {
-		display: flex;
-		align-items: center;
-	}
 	.input {
 		height: 2.1rem;
 		width: 100%;
@@ -24,10 +20,9 @@ const Wrapper = styled.div`
 	}
 `;
 
-function TextInput({type, onChange, value, label, formType}) {
+function TextInput({type, onChange, value, label}) {
 	return (
 		<Wrapper>
-			<div className={formType === 'inline' && 'inline'}>
 				<p className="label">{label}</p>
 				<input
 					type={type}
@@ -35,20 +30,17 @@ function TextInput({type, onChange, value, label, formType}) {
 					value={value}
 					onChange={e => onChange(e.target.value)}
 				/>
-			</div>
 		</Wrapper>
 	);
 }
 
 Text.defaultProps = {
 	type: 'text',
-	formType: 'block'
 };
 
 TextInput.propTypes = {
 	type: PropTypes.string,
 	label: PropTypes.string,
-	formType: PropTypes.string,
 	value: PropTypes.string.isRequired,
 	onChange: PropTypes.func.isRequired
 };
