@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 //import PrivateRoute from './PrivateRoute';
 
+import Logout from '../views/auth/Logout';
 import Login from '../views/auth/Login';
 //import Forgot from '../views/auth/Forgot';
 //import Dashboard from '../views/dashboard/Dashboard';
@@ -23,6 +24,7 @@ const AppRoutes = () => {
 		<Router>
 			<Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Logout />} />
 {/*
 				<Route exact path="/forgot" component={Forgot} />
 				<PrivateRoute exact path="/dashboard" component={Dashboard} />
