@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 //import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Paper } from '@mui/material';
-import { Link } from 'react-router-dom';
 import { TextInput } from '../common/inputs';
 import Button from '../common/Button';
 
@@ -16,15 +15,16 @@ const Wrapper = styled(Paper)`
 `;
 
 
-const LoginForm = () => {
-	const [email, setEmail] = useState('');
+const PasswordForm = () => {
 	const [password, setPassword] = useState('');
+	const [repeatPassword, setRepeatPassword] = useState('');
+
 
 
 	const onSubmit = (event) => {
 		event.preventDefault();
 		const data = {
-			email, password
+		password,repeatPassword
 		};
 		// eslint-disable-next-line no-console
 		console.log({data});
@@ -33,36 +33,30 @@ const LoginForm = () => {
 	return (
     <Wrapper square={false}>
 		<div className ="header">
- <h1> Hello Again!</h1>
- <p className="header-text">Welcome Back</p>
+ <h1>Forgot Password</h1>
+ <p className="header-text">Your new password must be different from the previous used passwords.</p>
 		</div>
-			<TextInput
-				label="Email address"
-				onChange={setEmail}
-			/>
+		<br />
 			<TextInput
 				label="Password"
-				value={password}
 				onChange={setPassword}
 			/>
+			<TextInput
+				label="Repeat Password"
+				onChange={setRepeatPassword}
+			/>
+<br />
 			<Button
-				text='Login'
+				text='Reset Password'
 				fullWidth={true}
 				onClick={onSubmit}
       />
-      <div className="links">
-				<Link to="/forgot" > Forgot Password?</Link>
-				<br />
-        <p> Dont have an Account?
-        <span> <Link to="/register" className="c-green text-semi-bold" > Signup? </Link> </span>
-        </p>
-			</div>
 		</Wrapper>
 	);
 };
 
-LoginForm.propTypes = {
+PasswordForm.propTypes = {
 /* 	loginUser: PropTypes.func.isRequired */
 };
 
-export default (LoginForm);
+export default (PasswordForm);

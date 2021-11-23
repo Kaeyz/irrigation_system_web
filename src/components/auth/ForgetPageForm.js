@@ -16,15 +16,15 @@ const Wrapper = styled(Paper)`
 `;
 
 
-const LoginForm = () => {
+const ForgetPageForm = () => {
 	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+
 
 
 	const onSubmit = (event) => {
 		event.preventDefault();
 		const data = {
-			email, password
+			email
 		};
 		// eslint-disable-next-line no-console
 		console.log({data});
@@ -33,36 +33,32 @@ const LoginForm = () => {
 	return (
     <Wrapper square={false}>
 		<div className ="header">
- <h1> Hello Again!</h1>
- <p className="header-text">Welcome Back</p>
+ <h1>Forgot Password</h1>
+ <p className="header-text">Enter the email associated with your account and we&#39;ll send an email with instructions to reset your password.</p>
 		</div>
+		<br />
 			<TextInput
 				label="Email address"
 				onChange={setEmail}
 			/>
-			<TextInput
-				label="Password"
-				value={password}
-				onChange={setPassword}
-			/>
+
 			<Button
-				text='Login'
+				text='Send Instructions'
 				fullWidth={true}
 				onClick={onSubmit}
       />
+
       <div className="links">
-				<Link to="/forgot" > Forgot Password?</Link>
-				<br />
-        <p> Dont have an Account?
-        <span> <Link to="/register" className="c-green text-semi-bold" > Signup? </Link> </span>
+        <p> Enter NewPassword?
+        <span> <Link to="/password" className="c-green text-semi-bold" > New Password? </Link> </span>
         </p>
 			</div>
 		</Wrapper>
 	);
 };
 
-LoginForm.propTypes = {
+ForgetPageForm.propTypes = {
 /* 	loginUser: PropTypes.func.isRequired */
 };
 
-export default (LoginForm);
+export default (ForgetPageForm);

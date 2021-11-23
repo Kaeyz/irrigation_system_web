@@ -8,7 +8,9 @@ import {
 //import PrivateRoute from './PrivateRoute';
 
 import Logout from '../views/auth/Logout';
+import ForgetPage from '../views/auth/ForgetPage';
 import Login from '../views/auth/Login';
+import Password from '../views/auth/Password';
 //import Forgot from '../views/auth/Forgot';
 //import Dashboard from '../views/dashboard/Dashboard';
 /* import PriceSettings from '../views/dashboard/PriceSettings';
@@ -25,6 +27,8 @@ const AppRoutes = () => {
 			<Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Logout />} />
+        <Route path="/forgot" element={<ForgetPage />} />
+        <Route path="/password" element={<Password />} />
 {/*
 				<Route exact path="/forgot" component={Forgot} />
 				<PrivateRoute exact path="/dashboard" component={Dashboard} />
