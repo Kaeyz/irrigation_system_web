@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 import PropTypes from 'prop-types';
+import Notify from '../common/Notify';
 
 const theme = {
 	color: {
@@ -84,6 +85,7 @@ const Theme = (props) =>
 		<div>
 			<GlobalStyle />
 			<Wrapper>
+				<Notify />
 				{props.children}
 			</Wrapper>
 		</div>

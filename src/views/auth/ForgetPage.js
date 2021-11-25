@@ -1,12 +1,12 @@
 
 import React from 'react';
 import AuthLayout from '../../components/layout/AuthLayout';
-import ForgetPageForm from '../../components/auth/ForgetPageForm';
+import ForgetForm from '../../components/auth/ForgetForm';
 
 function ForgetPage() {
 	return (
     <AuthLayout>
-			<ForgetPageForm />
+			<ForgetForm />
 		</AuthLayout>
 	);
 }
