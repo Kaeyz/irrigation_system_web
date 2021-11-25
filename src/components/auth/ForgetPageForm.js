@@ -34,14 +34,12 @@ const ForgetPageForm = () => {
     <Wrapper square={false}>
 		<div className ="header">
  <h1>Forgot Password</h1>
- <p className="header-text">Enter the email associated with your account and we&#39;ll send an email with instructions to reset your password.</p>
+ <p className="header-text">Enter your email to retrieve your account.</p>
 		</div>
-		<br />
 			<TextInput
 				label="Email address"
 				onChange={setEmail}
 			/>
-
 			<Button
 				text='Send Instructions'
 				fullWidth={true}
