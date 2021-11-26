@@ -3,11 +3,13 @@ import { CLEAR_SESSION } from '../types';
 
 import appReducer from './appReducer';
 import alertReducer from './alertReducer';
+import userReducer from './userReducer';
 
 
 const reducers = combineReducers({
   APP: appReducer,
   ALERT: alertReducer,
+  USER: userReducer
 });
 
 const rootReducer = (state, action) => {

@@ -30,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
 		margin: 0;
 		font-size: 1.2rem;
 		font-family: Poppins;
-    color: ${theme.color.dark}
+    color: ${theme.color.dark};
 	}
 	div, span {
     margin: 0;

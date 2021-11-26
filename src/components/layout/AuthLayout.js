@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import auth_BG from '../../assets/img/auth_bg.png';
 
 const Wrapper = styled.div`
-	min-width: 100vw;
+	max-width: 100vw;
 	min-height: 100vh;
 	background-image: ${`url(${auth_BG})`};
   background-repeat: no-repeat;

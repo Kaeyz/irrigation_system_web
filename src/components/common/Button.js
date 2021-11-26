@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import styled from 'styled-components';
+import Loader from './Loader';
+
 
 const Wrapper = styled.div`
 	.button {
@@ -26,9 +28,13 @@ const Wrapper = styled.div`
   .rounded {
     border-radius: 25px;
   }
+
+	.disabled {
+		pointer-events: none;
+	}
 `;
 
-function AppButton({ text, border, onClick, fullWidth, className, endIcon, startIcon, type }) {
+function AppButton({ text, border, onClick, fullWidth, className, endIcon, startIcon, type, isLoading }) {
 	return (
 		<Wrapper>
 			<Button
@@ -36,9 +42,9 @@ function AppButton({ text, border, onClick, fullWidth, className, endIcon, start
 				onClick={onClick}
 				endIcon={endIcon}
 				startIcon={startIcon}
-				className={`button ${border} ${fullWidth && 'fullWidth'} ${className}`}
+				className={`button ${border} ${fullWidth && 'fullWidth'} ${className} ${isLoading && 'disabled'}`}
 			>
-				{text}
+				{isLoading ? <Loader size="small" theme="light" /> : text}
 			</Button>
 		</Wrapper>
 	);
@@ -48,7 +54,8 @@ AppButton.defaultProps = {
 	fullWidth: false,
   type: 'button',
   border: 'block',
-  onClick: () => null
+	onClick: () => null,
+	isLoading: false
 };
 
 AppButton.propTypes = {
@@ -56,6 +63,7 @@ AppButton.propTypes = {
 	border: PropTypes.string.isRequired,
 	className: PropTypes.string,
 	fullWidth: PropTypes.bool.isRequired,
+	isLoading: PropTypes.bool.isRequired,
 	onClick: PropTypes.func,
 	endIcon: PropTypes.any,
 	startIcon: PropTypes.any,
