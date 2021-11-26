@@ -1,35 +1,35 @@
 import client from './client';
 
-exports.createUser = (data) => {
+export const createUser = (data) => {
   client.post('/user', data)
     .then(res => res.data)
     .catch(err => err.response.data);
 };
 
-exports.loginUser = (data) => {
+export const loginUser = (data) => {
   client.post('/user/login', data)
     .then(res => res.data)
     .catch(err => err.response.data);
 };
 
-exports.forgotPassword = (data) => {
+export const forgotPassword = (data) => {
   client.post('/user/forgot', data)
     .then(res => res.data)
     .catch(err => err.response.data);
 };
 
-exports.resetPassword = (data) => {
+export const resetPassword = (data) => {
   client.post('/user/reset', data)
     .then(res => res.data)
     .catch(err => err.response.data);
 };
 
-exports.getLoggedInUser = () => {
+export const getLoggedInUser = () => {
   client.get('/users/me')
     .then(res => res.data)
     .catch(err => err.response.data);
 };
 
-exports.logoutUser = () => {
+export const logoutUser = () => {
   return true;
 };
