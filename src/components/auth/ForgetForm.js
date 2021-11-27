@@ -59,9 +59,7 @@ const ForgetPageForm = () => {
 			/>
 
 			<div className="links">
-				<p> Enter NewPassword?
-					<span> <Link to="/password" className="c-green text-semi-bold" > New Password? </Link> </span>
-				</p>
+				<Link to="/login" className="c-green text-semi-bold" > Back to Login. </Link>
 			</div>
 		</Wrapper>
 	);
