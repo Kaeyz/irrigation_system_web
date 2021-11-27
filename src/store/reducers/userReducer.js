@@ -1,4 +1,4 @@
-import { SET_USER, SET_USER_ACTIONS, SET_IS_AUTHENTICATED } from '../types';
+import { SET_USER, SET_USER_ACTIONS, SET_AUTH } from '../types';
 
 const initialState = {
 	isAuthenticated: false,
@@ -7,12 +7,8 @@ const initialState = {
 		state: false,
 		loginUser: false,
 		createUser: false,
-		logoutUser: false,
 		resetPassword: false,
-		getUserWallet: false,
 		requestForgot: false,
-		validateAuthToken: false,
-		convertUserToAgent: false,
 		authenticateUser: false,
 	}
 };
@@ -30,7 +26,7 @@ export default function (state = initialState, action) {
 				[action.payload.action]: action.payload.state
 			}
 		};
-  case SET_IS_AUTHENTICATED:
+  case SET_AUTH:
 		return {...state, isAuthenticated: action.payload};
 	default:
 		return state;

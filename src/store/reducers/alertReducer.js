@@ -2,7 +2,7 @@ import { SUCCESS_ALERT, INFO_ALERT, ERROR_ALERT, CLEAR_ALERT } from '../types';
 
 const initialState = {
 	type: '',
-	msg: '',
+	message: '',
 	duration: null,
 	status: false,
 };
@@ -12,7 +12,7 @@ export default function (state = initialState, action) {
 	case ERROR_ALERT:
 		return {
 			...state,
-			msg: action.payload,
+			message: action.payload,
 			duration: null,
 			type: 'error',
 			status: true,
@@ -20,7 +20,7 @@ export default function (state = initialState, action) {
 	case SUCCESS_ALERT:
 		return {
 			...state,
-			msg: action.payload,
+			message: action.payload,
 			type: 'success',
 			duration: null,
 			status: true,
@@ -28,7 +28,7 @@ export default function (state = initialState, action) {
 	case INFO_ALERT:
 		return {
 			...state,
-			msg: action.payload,
+			message: action.payload,
 			status: true,
 			type: 'info',
 		};

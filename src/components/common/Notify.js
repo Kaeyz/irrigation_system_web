@@ -28,7 +28,7 @@ const Notify = ({ alerts }) => {
 				<Alert
 					severity={alerts.type ? alerts.type : undefined}
 				>
-					<Typography variant="body1" component="p" style={{color: 'black'}}>{alerts.msg}</Typography>
+					<Typography variant="body1" component="p" style={{color: 'black'}}>{alerts.message}</Typography>
 				</Alert>
 			</Snackbar>
 		);

@@ -53,6 +53,6 @@ Loader.defaultProps = {
 
 Loader.propTypes = {
   type: PropTypes.string.isRequired,
-  theme: PropTypes.string.isRequired,
+  theme: PropTypes.string,
   size: PropTypes.string.isRequired
 };

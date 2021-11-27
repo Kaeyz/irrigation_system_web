@@ -1,30 +1,34 @@
-
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Routes,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 
-import Logout from '../views/auth/Logout';
+import Register from '../views/auth/Register';
 import ForgetPage from '../views/auth/ForgetPage';
 import Login from '../views/auth/Login';
-import Password from '../views/auth/Password';
-import Dashboard from '../views/auth/Password';
-
+import ResetPassword from '../views/auth/ResetPassword';
+import UserDashboard from '../views/dashboard/UserDashboard';
 
 const AppRoutes = () => {
+  const usePrivateRoute = (component, isAuth=true) => {
+    return <PrivateRoute isAuth={isAuth} element={component} />;
+  };
+
 	return (
 		<Router>
 			<Routes>
-        <PrivateRoute path="/" isAuth={false} element={<Login />} />
-        <PrivateRoute path="/register" isAuth={false} element={<Logout />} />
-        <PrivateRoute path="/forgot" isAuth={false} element={<ForgetPage />} />
-        <PrivateRoute path="/password" isAuth={false} element={<Password />} />
-        <PrivateRoute exact path="/dashboard" element={<Dashboard />} />
+        <Route exact path="/" isAuth={false} element={usePrivateRoute(Login, false)} />
+        <Route exact path="/login" isAuth={false} element={usePrivateRoute(Login, false)} />
+        <Route exact path="/register" isAuth={false} element={usePrivateRoute(Register, false)} />
+        <Route exact path="/forgot" isAuth={false} element={usePrivateRoute(ForgetPage, false)} />
+        <Route exact path="/reset/:token" isAuth={false} element={usePrivateRoute(ResetPassword, false)} />
+        <Route exact path="/dashboard" element={usePrivateRoute(UserDashboard)} />
       </Routes>
 		</Router>
 	);
 };
 
 export default AppRoutes;
+
+/*
+  https://irrigate.netlify.app/reset/0D8BF9
+*/

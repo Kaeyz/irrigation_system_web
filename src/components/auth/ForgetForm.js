@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-//import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Paper } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { TextInput } from '../common/inputs';
 import Button from '../common/Button';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { requestForgot } from 'store/actions/userActions';
 
 const Wrapper = styled(Paper)`
 	padding: 2rem;
@@ -15,48 +16,57 @@ const Wrapper = styled(Paper)`
 	grid-gap: 0.6rem;
 `;
 
-
 const ForgetPageForm = () => {
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const forgotIsLoading = useSelector(state => state.USER.isLoading.requestForgot);
+
 	const [email, setEmail] = useState('');
+	const [errors, setErrors] = useState({});
 
+	const clearInputError = (field) => setErrors({ ...errors, [field]: '' });
 
+	const handleResponse = (err, res) => {
+		if (err) return setErrors(err);
+		if (res) navigate('/login');
+	};
 
 	const onSubmit = (event) => {
 		event.preventDefault();
-		const data = {
-			email
-		};
-		// eslint-disable-next-line no-console
-		console.log({data});
+		dispatch(requestForgot(email, handleResponse));
 	};
 
 	return (
-    <Wrapper square={false}>
-		<div className ="header">
- <h1>Forgot Password</h1>
- <p className="header-text">Enter your email to retrieve your account.</p>
-		</div>
+		<Wrapper square={false}>
+			<div className="header">
+				<h1>Forgot Password</h1>
+				<p className="header-text">Enter your email to retrieve your account.</p>
+			</div>
 			<TextInput
 				label="Email address"
+				type="email"
+				name="email"
+				value={email}
 				onChange={setEmail}
+				error={errors.email && errors.email}
+				clearError={clearInputError}
 			/>
 			<Button
-				text='Send Instructions'
+				text='Request Password reset'
 				fullWidth={true}
+				isLoading={forgotIsLoading}
 				onClick={onSubmit}
-      />
+			/>
 
-      <div className="links">
-        <p> Enter NewPassword?
-        <span> <Link to="/password" className="c-green text-semi-bold" > New Password? </Link> </span>
-        </p>
+			<div className="links">
+				<p> Enter NewPassword?
+					<span> <Link to="/password" className="c-green text-semi-bold" > New Password? </Link> </span>
+				</p>
 			</div>
 		</Wrapper>
 	);
 };
 
-ForgetPageForm.propTypes = {
-/* 	loginUser: PropTypes.func.isRequired */
-};
+ForgetPageForm.propTypes = {};
 
 export default (ForgetPageForm);

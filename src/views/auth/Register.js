@@ -1,6 +1,6 @@
 import React from 'react';
 import AuthLayout from '../../components/layout/AuthLayout';
-import LogoutForm from '../../components/auth/LogoutForm';
+import LogoutForm from '../../components/auth/RegisterForm';
 
 function Logout() {
 	return (
