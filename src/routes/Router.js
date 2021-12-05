@@ -21,8 +21,7 @@ const AppRoutes = () => {
         <Route exact path="/register" element={usePrivateRoute(Register, false)} />
         <Route exact path="/forgot" element={usePrivateRoute(ForgetPage, false)} />
         <Route exact path="/reset/:token" element={usePrivateRoute(ResetPassword, false)} />
-        {/* <Route exact path="/dashboard" element={usePrivateRoute(UserDashboard)} /> */}
-        <Route exact path="/dashboard" element={<UserDashboard />} />
+        <Route exact path="/dashboard" element={usePrivateRoute(UserDashboard)} />
       </Routes>
     </Router>
   );

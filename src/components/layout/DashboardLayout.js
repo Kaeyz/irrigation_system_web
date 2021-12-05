@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { Home } from '@mui/icons-material';
+import { Home, Logout, ViewList, Terrain } from '@mui/icons-material';
+import { useDispatch } from 'react-redux';
+import { logoutUser } from 'store/actions/userActions';
 
 const Wrapper = styled.div`
 	display: flex;
@@ -23,7 +25,7 @@ const Wrapper = styled.div`
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		border: 1px solid ${props => props.theme.color.white};
+		background: ${props => props.theme.color.light};
 		color: ${props => props.theme.color.white};
 		border-radius: 0.5rem;
 		text-decoration: none;
@@ -52,21 +54,29 @@ const Wrapper = styled.div`
 `;
 
 const DashboardLayout = ({ children, type }) => {
+	const dispatch = useDispatch();
+	const logoutClick = () => dispatch(logoutUser());
+
 	const links = {
 		admin: [
-			{ name: 'Overview', path: '/dashboard', icon: Home }
+			{ name: 'Overview', path: '/dashboard', icon: Home },
+			{ name: 'Devices', path: '/devices', icon: ViewList },
+			{ name: 'Logout', path: '/', icon: Logout, onClick: logoutClick  }
 		],
 		user: [
 			{ name: 'Overview', path: '/dashboard', icon: Home },
-			{ name: 'Login', path: '/login', icon: Home }
+			{ name: 'My Devices', path: '/devices', icon: ViewList },
+			{ name: 'Plots', path: '/plots', icon: Terrain },
+			{ name: 'Logout', path: '/', icon: Logout, onClick: logoutClick  }
 		]
 	};
 
 	const displayLink = links[type].map(data => {
-		const { icon, name, path } = data;
+		const { icon, name, path, onClick } = data;
 		const Icon = icon;
 		return (
 			<NavLink
+				onClick={onClick}
 				className={d => `link ${d.isActive && 'isActive'}`}
 				to={path}
 				key={path}
