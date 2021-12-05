@@ -13,18 +13,19 @@ const AppRoutes = () => {
     return <PrivateRoute isAuth={isAuth} element={component} />;
   };
 
-	return (
-		<Router>
-			<Routes>
-        <Route exact path="/" isAuth={false} element={usePrivateRoute(Login, false)} />
-        <Route exact path="/login" isAuth={false} element={usePrivateRoute(Login, false)} />
-        <Route exact path="/register" isAuth={false} element={usePrivateRoute(Register, false)} />
-        <Route exact path="/forgot" isAuth={false} element={usePrivateRoute(ForgetPage, false)} />
-        <Route exact path="/reset/:token" isAuth={false} element={usePrivateRoute(ResetPassword, false)} />
-        <Route exact path="/dashboard" element={usePrivateRoute(UserDashboard)} />
+  return (
+    <Router>
+      <Routes>
+        <Route exact path="/" element={usePrivateRoute(Login, false)} />
+        <Route exact path="/login" element={usePrivateRoute(Login, false)} />
+        <Route exact path="/register" element={usePrivateRoute(Register, false)} />
+        <Route exact path="/forgot" element={usePrivateRoute(ForgetPage, false)} />
+        <Route exact path="/reset/:token" element={usePrivateRoute(ResetPassword, false)} />
+        {/* <Route exact path="/dashboard" element={usePrivateRoute(UserDashboard)} /> */}
+        <Route exact path="/dashboard" element={<UserDashboard />} />
       </Routes>
-		</Router>
-	);
+    </Router>
+  );
 };
 
 export default AppRoutes;
