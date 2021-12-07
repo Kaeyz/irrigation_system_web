@@ -61,7 +61,7 @@ const Wrapper = styled.div`
 const DashboardLayout = ({ children }) => {
 	const dispatch = useDispatch();
 	const logoutClick = () => dispatch(logoutUser());
-	const userType = useSelector(state => state.USER.user.type);
+	const userType = useSelector(state => state.USER.user.userType);
 
 	const [isOpen, setIsOpen] = useState(false);
 	const toggleModal = () => setIsOpen(!isOpen);
