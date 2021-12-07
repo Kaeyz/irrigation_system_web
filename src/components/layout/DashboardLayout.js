@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { Home, Logout, ViewList, Terrain } from '@mui/icons-material';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from 'store/actions/userActions';
+import Modal from '../common/Modal';
 
 const Wrapper = styled.div`
 	display: flex;
@@ -51,35 +52,44 @@ const Wrapper = styled.div`
 		margin-bottom: 0rem;
 	}
 }
+
+.main {
+	padding: 5rem 1rem 0rem 2rem;
+}
 `;
 
-const DashboardLayout = ({ children, type }) => {
+const DashboardLayout = ({ children }) => {
 	const dispatch = useDispatch();
 	const logoutClick = () => dispatch(logoutUser());
+	const userType = useSelector(state => state.USER.user.type);
+
+	const [isOpen, setIsOpen] = useState(false);
+	const toggleModal = () => setIsOpen(!isOpen);
 
 	const links = {
 		admin: [
-			{ name: 'Overview', path: '/dashboard', icon: Home },
+			{ name: 'Dashboard', path: '/dashboard', icon: Home },
 			{ name: 'Devices', path: '/devices', icon: ViewList },
 			{ name: 'Logout', path: '/', icon: Logout, onClick: logoutClick  }
 		],
 		user: [
-			{ name: 'Overview', path: '/dashboard', icon: Home },
+			{ name: 'Dashboard', path: '/dashboard', icon: Home },
 			{ name: 'My Devices', path: '/devices', icon: ViewList },
 			{ name: 'Plots', path: '/plots', icon: Terrain },
+			{ name: 'Open Modal', path: '/dashboard', icon: Logout, onClick: toggleModal  },
 			{ name: 'Logout', path: '/', icon: Logout, onClick: logoutClick  }
 		]
 	};
 
-	const displayLink = links[type].map(data => {
+	const displayLink = links[userType || 'user'].map(data => {
 		const { icon, name, path, onClick } = data;
 		const Icon = icon;
 		return (
 			<NavLink
-				onClick={onClick}
 				className={d => `link ${d.isActive && 'isActive'}`}
-				to={path}
+				onClick={onClick}
 				key={path}
+				to={path}
 			>
 				<Icon />
 				{name}
@@ -90,18 +100,16 @@ const DashboardLayout = ({ children, type }) => {
 	return (
 		<Wrapper>
 			<div className="side-bar">{displayLink}</div>
-			<div>{children}</div>
+			<div className="main">{children}</div>
+			<Modal isOpen={isOpen} handleClose={toggleModal}>
+				This is a modal
+			</Modal>
 		</Wrapper>
 	);
 };
 
-DashboardLayout.defaultProps = {
-	type: 'user'
-};
-
 DashboardLayout.propTypes = {
-	children: PropTypes.any.isRequired,
-	type: PropTypes.string.isRequired
+	children: PropTypes.any.isRequired
 };
 
 export default DashboardLayout;

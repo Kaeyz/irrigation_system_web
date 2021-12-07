@@ -6,7 +6,7 @@ import Register from '../views/auth/Register';
 import ForgetPage from '../views/auth/ForgetPage';
 import Login from '../views/auth/Login';
 import ResetPassword from '../views/auth/ResetPassword';
-import UserDashboard from '../views/dashboard/UserDashboard';
+import Dashboard from '../views/dashboard/Dashboard';
 
 const AppRoutes = () => {
   const usePrivateRoute = (component, isAuth=true) => {
@@ -21,7 +21,7 @@ const AppRoutes = () => {
         <Route exact path="/register" element={usePrivateRoute(Register, false)} />
         <Route exact path="/forgot" element={usePrivateRoute(ForgetPage, false)} />
         <Route exact path="/reset/:token" element={usePrivateRoute(ResetPassword, false)} />
-        <Route exact path="/dashboard" element={usePrivateRoute(UserDashboard)} />
+        <Route exact path="/dashboard" element={usePrivateRoute(Dashboard)} />
       </Routes>
     </Router>
   );
