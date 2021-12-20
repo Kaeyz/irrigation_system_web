@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
 	.input {
-		height: 2.5rem;
+		height: 2.8rem;
 		width: 100%;
 		padding: 0rem 0.5rem;
 		outline: 0px;

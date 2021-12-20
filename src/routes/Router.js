@@ -28,7 +28,3 @@ const AppRoutes = () => {
 };
 
 export default AppRoutes;
-
-/*
-  https://irrigate.netlify.app/reset/0D8BF9
-*/

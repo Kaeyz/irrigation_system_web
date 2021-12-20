@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { Home, Logout, ViewList, Terrain } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from 'store/actions/userActions';
-import Modal from '../common/Modal';
 
 const Wrapper = styled.div`
 	display: flex;
@@ -63,9 +62,6 @@ const DashboardLayout = ({ children }) => {
 	const logoutClick = () => dispatch(logoutUser());
 	const userType = useSelector(state => state.USER.user.userType);
 
-	const [isOpen, setIsOpen] = useState(false);
-	const toggleModal = () => setIsOpen(!isOpen);
-
 	const links = {
 		admin: [
 			{ name: 'Dashboard', path: '/dashboard', icon: Home },
@@ -76,7 +72,6 @@ const DashboardLayout = ({ children }) => {
 			{ name: 'Dashboard', path: '/dashboard', icon: Home },
 			{ name: 'My Devices', path: '/devices', icon: ViewList },
 			{ name: 'Plots', path: '/plots', icon: Terrain },
-			{ name: 'Open Modal', path: '/dashboard', icon: Logout, onClick: toggleModal  },
 			{ name: 'Logout', path: '/', icon: Logout, onClick: logoutClick  }
 		]
 	};
@@ -101,9 +96,6 @@ const DashboardLayout = ({ children }) => {
 		<Wrapper>
 			<div className="side-bar">{displayLink}</div>
 			<div className="main">{children}</div>
-			<Modal isOpen={isOpen} handleClose={toggleModal}>
-				This is a modal
-			</Modal>
 		</Wrapper>
 	);
 };
