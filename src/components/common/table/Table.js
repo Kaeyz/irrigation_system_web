@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Pagination from './Pagination';
 
 const Wrapper = styled.div`
-	padding: 0.5rem;
   .content, .th {
     min-width: 3rem;
     width: max-content;
@@ -22,9 +21,14 @@ const Wrapper = styled.div`
 	tr:nth-child(even) {
 		background: ${props => props.theme.color.grey};
 	}
+  .footer {
+    display: grid; 
+    justify-content: center;
+  }
 `;
 
-const Table = ({headers, data}) => {
+const Table = ({ headers, data, page, count, limit, onPageChange }) => {
+  const totalPages = Math.floor(count / limit) + (count % limit > 0 ? 1 : 0);
   return (
     <Wrapper>
       <table className="table" >
@@ -47,7 +51,13 @@ const Table = ({headers, data}) => {
         }
         </tbody>
       </table>
-      <Pagination />
+      <div className="footer">
+        <Pagination
+          page={page}
+          count={totalPages}
+          onPageChange={onPageChange}
+        />
+      </div>
     </Wrapper>
   );
 };
@@ -62,7 +72,11 @@ Table.defaultProps = {
 
 Table.propTypes = {
   headers: PropTypes.array.isRequired,
-	data: PropTypes.array.isRequired,
+  data: PropTypes.array.isRequired,
+  page: PropTypes.number.isRequired,
+  count: PropTypes.number.isRequired,
+  limit: PropTypes.number.isRequired,
+  onPageChange: PropTypes.func.isRequired
 };
 
 export default Table;

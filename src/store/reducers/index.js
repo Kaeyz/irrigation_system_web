@@ -4,12 +4,18 @@ import { CLEAR_SESSION } from '../types';
 import appReducer from './appReducer';
 import alertReducer from './alertReducer';
 import userReducer from './userReducer';
+import deviceReducer from './deviceReducer';
+import plotReducer from './plotReducer';
+import moistureHistoryReducer from './moistureHistoryReducer';
 
 
 const reducers = combineReducers({
   APP: appReducer,
   ALERT: alertReducer,
-  USER: userReducer
+	USER: userReducer,
+	DEVICES: deviceReducer,
+	PLOTS: plotReducer,
+	MOISTURE_HISTORY: moistureHistoryReducer,
 });
 
 const rootReducer = (state, action) => {
