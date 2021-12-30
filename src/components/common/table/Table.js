@@ -18,8 +18,8 @@ const Wrapper = styled.div`
 		min-width: 10rem;
 		background: ${props => props.theme.color.light};
 	}
-	tr:nth-child(odd) {
-		background: ${props => props.theme.color.grey};
+	tr:nth-child(even) {
+		background: ${props => props.theme.color.light};
 	}
   .footer {
     display: grid; 

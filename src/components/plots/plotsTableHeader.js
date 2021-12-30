@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const plotsTableHeader = [
 	{
@@ -39,6 +40,14 @@ export const plotsTableHeader = [
 		},
 		render: (rowData) => {
 			return <p>{String(rowData['controlValve'])}</p>;
+		},
+	},
+	{
+		title: () => {
+			return <p>Moisture History</p>;
+		},
+		render: (rowData) => {
+			return <Link to={`/plots/history/${rowData._id}`}>View</Link>;
 		},
 	},
 ];
