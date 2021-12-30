@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Pagination from './Pagination';
 
-const Wrapper = styled.div`
+const Wrapper = styled.div`  
+  overflow-x: scroll;
   .content, .th {
     min-width: 3rem;
     width: max-content;
@@ -11,14 +12,13 @@ const Wrapper = styled.div`
   }
 	.table {
 		width: 100%;
-		margin-top: 1rem;
 	}
 	.thead {
 		text-align: left;
-		min-width: 20rem;
-		background: ${props => props.theme.color.grey};
+		min-width: 10rem;
+		background: ${props => props.theme.color.light};
 	}
-	tr:nth-child(even) {
+	tr:nth-child(odd) {
 		background: ${props => props.theme.color.grey};
 	}
   .footer {

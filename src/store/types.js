@@ -20,9 +20,11 @@ module.exports = Object.freeze({
   SET_DEVICE: 'set_device',
 
   SET_PLOT_ACTIONS: 'set_plot_actions',
+  SET_PLOT_PAGE: 'set_plot_page',
   SET_PLOTS: 'set_plots',
   SET_PLOT: 'set_plot',
 
   SET_MOISTURE_HISTORY_ACTIONS: 'set_moisture_history_actions',
+  SET_MOISTURE_HISTORY_PAGE: 'set_moisture_history_page',
   SET_MOISTURE_HISTORY: 'set_moisture_history',
 });

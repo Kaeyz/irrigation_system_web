@@ -1,12 +1,12 @@
 import React from 'react';
 
-export const devicesTableHeader = [
+export const plotsTableHeader = [
 	{
 		title: () => {
-			return <p>Serial Number</p>;
+			return <p>Plot Name</p>;
 		},
 		render: (rowData) => {
-			return <p>{rowData['serialNumber']}</p>;
+			return <p>{rowData['name']}</p>;
 		},
 	},
 /* 	{
@@ -19,26 +19,26 @@ export const devicesTableHeader = [
 	}, */
 	{
 		title: () => {
-			return <p>Type</p>;
+			return <p>Moisture Requirement</p>;
 		},
 		render: (rowData) => {
-			return <p>{rowData['type']}</p>;
+			return <p>{rowData['moistureRequirement']}</p>;
 		},
 	},
 	{
 		title: () => {
-			return <p>Is Mapped</p>;
+			return <p>Moisture Sensor</p>;
 		},
 		render: (rowData) => {
-			return <p>{String(rowData['isMapped'])}</p>;
+			return <p>{String(rowData['moistureSensor'])}</p>;
 		},
 	},
 	{
 		title: () => {
-			return <p>Time</p>;
+			return <p>Control Valve</p>;
 		},
 		render: (rowData) => {
-			return <p>{rowData['createdAt']}</p>;
+			return <p>{String(rowData['controlValve'])}</p>;
 		},
-	}
+	},
 ];

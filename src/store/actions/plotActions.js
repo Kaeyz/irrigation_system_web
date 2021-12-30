@@ -1,6 +1,6 @@
 import server from '../server';
 import { errorAlert, infoAlert, successAlert } from './alertActions';
-import { SET_PLOTS, SET_PLOT, SET_PLOT_ACTIONS } from '../types';
+import { SET_PLOTS, SET_PLOT, SET_PLOT_ACTIONS, SET_PLOT_PAGE } from '../types';
 
 const setIsLoading = (action, state) => {
   return { type: SET_PLOT_ACTIONS, payload: { action, state } };
@@ -14,6 +14,10 @@ const setPlot = (device) => {
   return { type: SET_PLOT, payload: device };
 };
 
+export const onPlotPageChange = (page) => {
+  return { type: SET_PLOT_PAGE, payload: page };
+};
+
 export const addPlot = (plotData, handleResponse) => dispatch => {
   dispatch(setIsLoading('addPlot', true));
   dispatch(infoAlert('Adding Plot...'));
@@ -21,6 +25,7 @@ export const addPlot = (plotData, handleResponse) => dispatch => {
   .then(res => {
     dispatch(successAlert(res.data.message));
     handleResponse && handleResponse(null, true);
+    dispatch(getPlots());
     dispatch(setIsLoading('addPlot', false));
   })
   .catch(err => {
@@ -31,9 +36,10 @@ export const addPlot = (plotData, handleResponse) => dispatch => {
   });
 };
 
-export const getPlots = () => dispatch => {
+export const getPlots = () => (dispatch, getState) => {
+  const page = getState().PLOTS.plots.page;
   dispatch(setIsLoading('getPlots', true));
-  server.get('/plots')
+  server.get(`/plots?page=${page}`)
     .then(res => {
       dispatch(setPlots(res.data.data));
       dispatch(setIsLoading('getPlots', false));

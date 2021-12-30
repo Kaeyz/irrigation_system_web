@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
-//import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import Button from '../common/Button';
 import AddIcon from '@mui/icons-material/Add';
 import AddDeviceForm from './AddDeviceForm';
-import { useEffect } from 'react';
 import { getDevices, onDevicePageChange } from 'store/actions/deviceActions';
 import DevicesTable from './DevicesTable';
 
@@ -16,7 +14,6 @@ const Wrapper = styled.div`
 		margin-bottom: 1rem;
 	}
 `;
-
 
 const Devices = () => {
 	const dispatch = useDispatch();

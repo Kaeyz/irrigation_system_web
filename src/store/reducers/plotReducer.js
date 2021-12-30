@@ -1,7 +1,7 @@
-import { SET_PLOT, SET_PLOT_ACTIONS, SET_PLOTS } from '../types';
+import { SET_PLOT, SET_PLOT_ACTIONS, SET_PLOTS, SET_PLOT_PAGE } from '../types';
 
 const initialState = {
-  plots: [],
+  plots: { data: [], count: 0, page: 1, limit: 10 },
   plot: {},
 	isLoading: {
     addPlot: false,
@@ -14,6 +14,10 @@ export default function (state = initialState, action) {
 	switch (action.type) {
 	case SET_PLOTS:
 		return { ...state, plots: action.payload };
+	case SET_PLOT:
+		return {...state, plot: action.payload};
+		case SET_PLOT_PAGE:
+			return { ...state, plots: { ...state.plots, page: action.payload } };
 	case SET_PLOT_ACTIONS:
 		return {
 			...state,
@@ -23,8 +27,6 @@ export default function (state = initialState, action) {
 				[action.payload.action]: action.payload.state
 			}
 		};
-  case SET_PLOT:
-		return {...state, plot: action.payload};
 	default:
 		return state;
 	}

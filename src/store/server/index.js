@@ -5,6 +5,14 @@ const server = axios.create({
   baseURL: keys.server, auth: keys.auth,
 });
 
+/* server.interceptors.response.use(
+	response => {
+		return Promise.resolve(response);
+	},
+	error => {
+		return Promise.reject(error);
+	}); */
+
 export const setAuthToHeader = token => {
 	server.defaults.headers['token'] = token;
 	return;
@@ -16,4 +24,3 @@ export const removeAuthFromHeader = () => {
 };
 
 export default server;
-

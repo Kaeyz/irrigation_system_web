@@ -1,22 +1,37 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Modal from '../common/Modal';
-import { TextInput, RadioInput } from '../common/inputs';
+import { TextInput } from '../common/inputs';
 import Button from '../common/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { addPlot } from 'store/actions/plotActions';
 
-const AddPlotForm = ({handleClose, isOpen}) => {
+const AddDeviceForm = ({ handleClose, isOpen }) => {
+	const dispatch = useDispatch();
+	const isLoading = useSelector(state => state.PLOTS.isLoading);
 	const [name, setName] = useState('');
-	const [serialNumber, setSerialNumber] = useState('');
-	const [type, setType ] = useState('moisture_sensor');
+	const [moistureRequirement, setMoistureRequirement] = useState('');
+	const [controlValve, setControlValve] = useState('');
+	const [moistureSensor, setMoistureSensor] = useState('');
 	const [errors, setErrors] = useState({});
 
 	const clearInputError = (field) => setErrors({ ...errors, [field]: '' });
+
+	const handleResponse = (err, res) => {
+		if (err) return setErrors(err);
+		if (res) handleClose();
+	};
+
+	const onSubmit = (e) => {
+		e.preventDefault();
+		const data = { name, moistureRequirement, controlValve, moistureSensor };
+		dispatch(addPlot(data, handleResponse));
+	};
 
 	return (
 		<Modal isOpen={isOpen} handleClose={handleClose} >
 			<h2>Add Plot</h2>
 
-			<br />
 			<TextInput
 				label="Plot Name"
 				name="name"
@@ -29,46 +44,59 @@ const AddPlotForm = ({handleClose, isOpen}) => {
 			<br />
 
 			<TextInput
-				label="Device Serial Number"
-				name="serialNumber"
-				value={serialNumber}
-				onChange={setSerialNumber}
-				error={errors.serialNumber && errors.serialNumber}
+				label="Moisture Requirement"
+				name="moistureRequirement"
+				value={moistureRequirement}
+				onChange={setMoistureRequirement}
+				error={errors.moistureRequirement && errors.moistureRequirement}
 				clearError={clearInputError}
 			/>
 
 			<br />
 
-			<RadioInput
-				label="Device Type"
-				value={type}
-				onChange={setType}
-				options={deviceTypeOptions}
-				defaultValue={deviceTypeOptions[0].value}
+			<TextInput
+				label="Moisture Sensor"
+				name="moistureSensor"
+				value={moistureSensor}
+				onChange={setMoistureSensor}
+				error={errors.moistureSensor && errors.moistureSensor}
+				clearError={clearInputError}
 			/>
 
 			<br />
 
-			<Button text="Add Device" fullWidth={true}  />
+			<TextInput
+				label="Control Valve"
+				name="controlValve"
+				value={controlValve}
+				onChange={setControlValve}
+				error={errors.controlValve && errors.controlValve}
+				clearError={clearInputError}
+			/>
+
+			<br />
+
+			<Button
+				text="Add Plot"
+				fullWidth={true}
+				onClick={onSubmit}
+				isLoading={isLoading.addPlot}
+			/>
 
 		</Modal>
 	);
 };
 
-AddPlotForm.defaultProps = {
+AddDeviceForm.defaultProps = {
 	handleClose: () => {},
 	isOpen: false,
 };
 
-AddPlotForm.propTypes = {
+AddDeviceForm.propTypes = {
 	handleClose: PropTypes.func.isRequired,
 	isOpen: PropTypes.bool.isRequired,
 };
 
-const deviceTypeOptions = [
-	{ name: 'Moisture Sensor', value: 'moisture_sensor' },
-	{ name: 'Water Valve', value: 'water_valve' },
-];
 
-export default AddPlotForm;
+export default AddDeviceForm;
 

@@ -14,6 +14,10 @@ const setDevice = (device) => {
   return { type: SET_DEVICE, payload: device };
 };
 
+export const onDevicePageChange = (page) => {
+  return { type: SET_DEVICE_PAGE, payload: page };
+};
+
 export const addDevice = (deviceData, handleResponse) => dispatch => {
   dispatch(setIsLoading('addDevice', true));
   dispatch(infoAlert('Adding Device...'));
@@ -45,10 +49,6 @@ export const getDevices = () => (dispatch, getState) => {
       dispatch(errorAlert(message));
       dispatch(setIsLoading('getDevices', false));
     });
-};
-
-export const onDevicePageChange = (page) => {
-  return { type: SET_DEVICE_PAGE, payload: page };
 };
 
 export const getDevice = (serialNumber) => dispatch => {
