@@ -10,7 +10,9 @@ const PrivateRoute = ({ element: RouteComponent, isAuth, ...props }) => {
 		return <RouteComponent {...props} />;
 	}
 
-	return user.isAuthenticated ?  <Navigate to="/dashboard" /> : <Navigate to="/" />;
+	return user.isAuthenticated ?
+		user.user.userType === 'admin' ? <Navigate to="/devices" /> : <Navigate to="/plots" />
+		: <Navigate to="/" />;
 };
 
 PrivateRoute.propTypes = {

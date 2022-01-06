@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { Home, Logout, ViewList, Terrain } from '@mui/icons-material';
+import { Logout, ViewList, Terrain } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from 'store/actions/userActions';
 
@@ -64,12 +64,10 @@ const DashboardLayout = ({ children }) => {
 
 	const links = {
 		admin: [
-			{ name: 'Dashboard', path: '/dashboard', icon: Home },
 			{ name: 'Devices', path: '/devices', icon: ViewList },
 			{ name: 'Logout', path: '/', icon: Logout, onClick: logoutClick  }
 		],
 		user: [
-			{ name: 'Dashboard', path: '/dashboard', icon: Home },
 			{ name: 'Plots', path: '/plots', icon: Terrain },
 			{ name: 'Logout', path: '/', icon: Logout, onClick: logoutClick  }
 		]
