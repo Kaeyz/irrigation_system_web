@@ -70,7 +70,6 @@ const DashboardLayout = ({ children }) => {
 		],
 		user: [
 			{ name: 'Dashboard', path: '/dashboard', icon: Home },
-			{ name: 'My Devices', path: '/devices', icon: ViewList },
 			{ name: 'Plots', path: '/plots', icon: Terrain },
 			{ name: 'Logout', path: '/', icon: Logout, onClick: logoutClick  }
 		]
